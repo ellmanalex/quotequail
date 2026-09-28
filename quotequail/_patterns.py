@@ -158,6 +158,19 @@ MAX_WRAP_LINES = 2
 # Reply patterns are anchored at both ends ("^On ... wrote:$"), so joining more
 # lines only matches when the window starts and ends exactly on the pattern.
 MAX_REPLY_WRAP_LINES = 4
+# Amount of lines a header value may wrap over when another known header
+# follows it, e.g. a "To:" with several recipients, wrapped by the client:
+#
+#   *To: *John Doe <
+#   john@doe.example>,
+#   Mary Major <
+#   mary@doe.example>
+#   *Cc: *...
+#
+# Beyond MAX_WRAP_LINES a line only counts as a continuation when a known
+# header line follows within this window (before a blank line), so the body
+# text after the last header is never absorbed into it.
+MAX_HEADER_WRAP_LINES = 8
 
 # minimum number of headers that we recognize
 MIN_HEADER_LINES = 2

@@ -13,6 +13,14 @@
   address and before "wrote:", and a three- or four-line reply line was not
   recognized at all: the message came back as an anonymous quote with no
   `from` or `date`. Forward markers and headers keep `MAX_WRAP_LINES`.
+* Keep a header whose value wraps over several lines when another known
+  header follows (`MAX_HEADER_WRAP_LINES`), such as a "To:" with several
+  recipients. Past the second line such a header ended the header block, so
+  the headers were re-detected further down and `from`, `date` and `to` were
+  lost. A line only continues a header this way when a known header follows
+  it, so the body after the last header is never absorbed.
+* Drop the stray "*" left in front of values of bold headers written as
+  "*From: *John".
 
 ## v0.5.4
 
