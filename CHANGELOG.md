@@ -8,6 +8,11 @@
   inside the date: `date` came back as "Mon, Jan 5" and `from` as
   "2015 at 3:04 PM John Doe <john@doe.example>". Also accept a narrow no-break
   space (U+202F) before AM/PM, as recent Gmail writes it.
+* Recognize a reply line ("On DATE, USER wrote:") wrapped over up to four
+  lines (`MAX_REPLY_WRAP_LINES`). Gmail wraps it at the date, before the
+  address and before "wrote:", and a three- or four-line reply line was not
+  recognized at all: the message came back as an anonymous quote with no
+  `from` or `date`. Forward markers and headers keep `MAX_WRAP_LINES`.
 
 ## v0.5.4
 
